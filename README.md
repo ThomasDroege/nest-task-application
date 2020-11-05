@@ -1,1 +1,0 @@
-# nest-task-application
