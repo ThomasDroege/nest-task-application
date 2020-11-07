@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Task } from './task.model';
+import { Task, TaskStatus } from './task.model';
+const {v1: uuidv1} = require('uuid');
 
 // Service in general provides the business logic
 // The responsibility of Task service is e.g. to get all Tasks
@@ -10,5 +11,17 @@ export class TasksService {
 
     getAllTasks(): Task[] {
         return this.tasks;
+    }
+
+    createTask(title: string, description: string): Task {
+        const task: Task = {
+            id: uuidv1(),
+            title,
+            description,
+            status:TaskStatus.OPEN,
+        };
+
+        this.tasks.push(task);
+        return task;
     }
 }
