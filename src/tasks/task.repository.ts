@@ -16,7 +16,7 @@ export class TaskRepository extends Repository<Task> {
         }
 
         if(search){
-            // if title contains search term OR description contains search term than
+            // if title contains search term OR description contains search term than (LIKE = PARTIAL)
             query.andWhere('task.title LIKE :search OR task.description LIKE :search', {search: `%${search}%`});
         }
 
